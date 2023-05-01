@@ -22,26 +22,31 @@ class Journal
         DateTime theCurrentTime = DateTime.Now;
         string date = theCurrentTime.ToShortDateString();
 
-        string prompt = GetRandomPrompt();
+        PromptGenerator newPrompt = new PromptGenerator();
+
+        string prompt = newPrompt.GetRandomPrompt();
         Console.WriteLine(prompt); 
         string response = Console.ReadLine();
 
         Entry entry = new Entry(date, prompt, response);  
+        entries.Add(entry);
     }
 
     public void SaveToCSV()
     {
-        string file = "SaveLoadCSV.cs";
+        string file = "SaveLoadCSV.txt";
+        List<string> records = new List<string>();
 
-        using (StreamWriter outputFile = new StreamWriter(file))
+        foreach(Entry entry in entries)
         {
-            outputFile.WriteLine(DisplayEntry());
+            records.Add(entry.getEntryAsCSV());
         }
+        File.WriteAllLines(file, records);
     }
 
     public void LoadFromCSV()
     {
-        string file = "SaveLoadCSV.cs";
+        string file = "SaveLoadCSV.txt";
         string[] lines = System.IO.File.ReadAllLines(file);
 
         foreach (string line in lines)

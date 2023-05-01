@@ -1,12 +1,14 @@
 
 class MoodTracker
 {
+    List<string> moods;
+    string moodText;
+    int moodInput = 0;
+    List<Entry> moodList;
+
     public MoodTracker()
     {
-        int moodInput = 0;
-        string moodtext;
-
-        List<string> moods = new List<string>
+        moods = new List<string>
         {
             "Please select one of the following moods: ",
             "1. Amazing",
@@ -16,28 +18,30 @@ class MoodTracker
             "5. Sad",
             "6. Sick", 
             "7. Thankful", 
-            "8. Tired",
-            "9. Quit"
+            "8. Tired"
+            //"9. Quit"
         };
-
-        while (moodInput != 9)
-            {
-                foreach (string moodItem in moods)
-                {
-                    Console.WriteLine(moodItem);
-                }
-                moodInput = int.Parse(Console.ReadLine());
-            }
-
-            moodtext = moods[moodInput];    
-        
-
-        string ViewMoodTracker()
+    }
+    public string MoodInput()
+    {
+        foreach (string moodItem in moods)
         {
-            DateTime theCurrentTime = DateTime.Now;
-            string date = theCurrentTime.ToShortDateString();
-
-            Console.WriteLine($"Your mood on {date} was {moodtext}.");
+            Console.WriteLine(moodItem);
         }
+
+        moodInput = int.Parse(Console.ReadLine());
+
+        moodText = moods[moodInput];
+
+        return moodText;
+          
+    }
+
+    public void ViewMoodTracker()
+    {
+        DateTime theCurrentTime = DateTime.Now;
+        string date = theCurrentTime.ToShortDateString();
+
+        Console.WriteLine($"Your mood on {date} was {moodText}.");
     }
 }

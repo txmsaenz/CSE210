@@ -4,7 +4,7 @@ class Entry
 {
     string date;
     string prompt;
-    string response;
+    string response; 
 
     public Entry(string _date, string _prompt, string _response)
     {
@@ -15,11 +15,13 @@ class Entry
 
     public void DisplayEntry()
     {
-        Console.WriteLine(date, prompt, response);
+        Console.WriteLine(date);
+        Console.WriteLine(prompt);
+        Console.WriteLine(response);
     }
 
     public string getEntryAsCSV()
     {
-        return string.Format("{0}{1}{2}", date, prompt, response);
+        return string.Format("{0}|{1}|{2}", date, prompt, response);
     }
 }

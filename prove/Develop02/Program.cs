@@ -2,9 +2,10 @@ using System;
 
 class Program
 {
-    static Entry Main(string[] args)
+    static void Main(string[] args)
     {
         Journal journal = new Journal();
+        MoodTracker mood = new MoodTracker();
         int menuInput = 0;
 
         List<string> menu = new List<string>
@@ -27,47 +28,41 @@ class Program
                 Console.WriteLine(menuItem);
             }
             menuInput = int.Parse(Console.ReadLine());
-        }
 
-        if (menuInput == 1)
-        {
-            Journal write = new Journal();
-            write.CreateJournalEntries();
-        }
+            if (menuInput == 1)
+            {
+                journal.CreateJournalEntries();
+            }
 
-        else if (menuInput == 2)
-        {
-            Journal display = new Journal();
-            display.DisplayJournalEntries();
-        }
+            else if (menuInput == 2)
+            {
+                journal.DisplayJournalEntries();
+            }
 
-        else if (menuInput == 3)
-        {
-            Journal load = new Journal();
-            load.LoadFromCSV();
-        }
+            else if (menuInput == 3)
+            {
+                journal.LoadFromCSV();
+            }
 
-        else if (menuInput == 4)
-        {
-            var save = new Journal();
-            save.SaveToCSV();
-        }
+            else if (menuInput == 4)
+            {
+                journal.SaveToCSV();
+            }
 
-        else if (menuInput == 5)
-        {
-            var mood = new MoodTracker();
-            mood.MoodTracker();
-        }
+            else if (menuInput == 5)
+            {
+                mood.MoodInput();
+            }
 
-        else if (menuInput == 6)
-        {
-            var mood = new MoodTracker();
-            mood.ViewMoodTracker();
-        }
+            else if (menuInput == 6)
+            {
+                mood.ViewMoodTracker();
+            }
 
-        else if (menuInput == 7)
-        {
-            Console.WriteLine("Thank you!");
+            else if (menuInput == 7)
+            {
+                Console.WriteLine("Thank you!");
+            }
         }
     }
 }
