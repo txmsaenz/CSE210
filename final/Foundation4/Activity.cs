@@ -1,10 +1,12 @@
 
-public abstract class Exercise
+public abstract class Activity
 {
     protected string _date;
     protected double _timeSpent;
-
-    public Exercise(string date, double timeSpent)
+    protected string _type;
+    protected string _summary;
+    
+    public Activity(string date, double timeSpent)
     {
         _date = date;
         _timeSpent = timeSpent;
@@ -16,5 +18,5 @@ public abstract class Exercise
 
     public abstract double CalcPace();
 
-    public abstract string Summary();
+    public abstract string GetSummary();
 }

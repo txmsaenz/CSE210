@@ -1,29 +1,40 @@
 
 public class Event
 {
-    private string _type;
-    private string _title;
-    private string _date;
-    private string _address;
-    private string _description;
+    protected string _type;
+    protected string _title;
+    protected string _description;
+    protected string _date;
+    protected string _time;
+    protected Address _address;
+    protected string _standardMessage;
+    protected string _shortMessage;
+    
+
+    public Event(string title, string description, string date, string time, Address address)
+    {
+        _title = title;
+        _description = description;
+        _date = date;
+        _time = time;
+        _address = address;
+    }
 
     public Event()
     {
-
     }
 
-    public void StandardMessage()
+    public string StandardMessage()
     {
+        _standardMessage = "Title: " + _title + ", " + _description + ", on " + _date + ", at " + _time + ", at " + _address.GetAddress();
 
+        return _standardMessage;
     }
 
-    public void FullMessage()
+    public string ShortMessage()
     {
+        _shortMessage = "Type of event: " + _type + ", title: " + _title + ", on " + _date;
 
-    }
-
-    public void ShortMessage()
-    {
-        
+        return _shortMessage;
     }
 }
